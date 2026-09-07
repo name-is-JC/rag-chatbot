@@ -1,0 +1,46 @@
+name: Daily Data Refresh
+
+on:
+  schedule:
+    # 3:45 AM UTC = 9:15 AM IST, Monday-Friday. See Docs/RAG-Architecture.md §8.
+    - cron: "45 3 * * 1-5"
+  workflow_dispatch: {}
+
+concurrency:
+  group: daily-refresh
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # PLACEHOLDER — Phase 1 only proves the scheduling/commit-back mechanics.
+      # Phase 2 (Ingestion) replaces this step with the real fetch/parse/chunk/embed pipeline
+      # described in Docs/Ingestion-Architecture.md.
+      - name: Run ingestion (placeholder)
+        run: |
+          mkdir -p data
+          python -c "import json, datetime; json.dump({'last_run_utc': datetime.datetime.utcnow().isoformat()}, open('data/last_refresh.json', 'w'), indent=2)"
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/last_refresh.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Daily data refresh: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            git push
+          fi
