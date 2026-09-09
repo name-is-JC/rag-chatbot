@@ -24,18 +24,21 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+          cache: "pip"
 
-      # PLACEHOLDER — Phase 1 only proves the scheduling/commit-back mechanics.
-      # Phase 2 (Ingestion) will point this step at the real pipeline entry point
-      # in phase-2-ingestion/ instead, described in Docs/Ingestion-Architecture.md.
-      - name: Run ingestion (placeholder)
-        run: python phase-1-scheduler/refresh_placeholder.py
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      # Phase 2 (Ingestion): fetch -> parse -> chunk -> embed -> store,
+      # per Docs/Ingestion-Architecture.md. Replaces the Phase 1 placeholder.
+      - name: Run ingestion pipeline
+        run: python phase-2-ingestion/run_ingestion.py
 
       - name: Commit and push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/last_refresh.json
+          git add data/chroma data/ingestion_manifest.json
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else

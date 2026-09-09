@@ -1,0 +1,6 @@
+# Phase 2 (Ingestion) — see Docs/Ingestion-Architecture.md
+requests
+beautifulsoup4
+lxml
+sentence-transformers
+chromadb
