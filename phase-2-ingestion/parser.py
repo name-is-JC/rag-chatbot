@@ -52,6 +52,10 @@ def _fmt_lock_in(lock_in: dict | None) -> str:
     return f"Lock-in period: {', '.join(parts)}." if parts else "No lock-in period."
 
 
+def _fmt_rating(value) -> str:
+    return f"{value}/5" if value is not None else "not available"
+
+
 def _block(text: str, section_hint: str) -> dict:
     return {"text": text, "section_hint": section_hint}
 
@@ -93,6 +97,10 @@ def _render_groww_fields(mf: dict) -> list[dict]:
             f"Lumpsum allowed: {'Yes' if mf.get('lumpsum_allowed') else 'No'}.",
             "Investment Limits",
         )
+    )
+
+    blocks.append(
+        _block(f"Groww rating: {_fmt_rating(mf.get('groww_rating'))}.", "Ratings")
     )
 
     blocks.append(
