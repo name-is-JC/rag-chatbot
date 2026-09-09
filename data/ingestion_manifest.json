@@ -1,0 +1,30 @@
+{
+  "https://groww.in/mutual-funds/bajaj-finserv-balanced-advantage-fund-direct-growth": {
+    "content_hash": "1be5f858d542d295ab3ba7cd34f0873bf85589e928a2930c5b0fd5b1a65cb852",
+    "last_fetched_at": "2026-09-09"
+  },
+  "https://groww.in/mutual-funds/bajaj-finserv-elss-tax-saver-fund-direct-growth": {
+    "content_hash": "59e9c277a873323e97bdd6d3422c2d4a2a88f7048f7814c0da4a48a83b1a5c0b",
+    "last_fetched_at": "2026-09-09"
+  },
+  "https://groww.in/mutual-funds/bajaj-finserv-flexi-cap-fund-direct-growth": {
+    "content_hash": "0ec7bfeb5fb3adffee5c602af1c8d184d3f347342b5f9b2bfce63372a4ac333f",
+    "last_fetched_at": "2026-09-09"
+  },
+  "https://groww.in/mutual-funds/bajaj-finserv-healthcare-fund-direct-growth": {
+    "content_hash": "20677d513d11e5c16f26db028f01bb27e8a8ae3efb7b6fcaafb75a22f6d2f068",
+    "last_fetched_at": "2026-09-09"
+  },
+  "https://groww.in/mutual-funds/bajaj-finserv-large-mid-cap-fund-direct-growth": {
+    "content_hash": "6eee1462767d52152538e33ba34e9db12d9214116450b7f116b18a7ca6925a6a",
+    "last_fetched_at": "2026-09-09"
+  },
+  "https://groww.in/mutual-funds/bajaj-finserv-multi-cap-fund-direct-growth": {
+    "content_hash": "6923866b4c3a33fde51552c0e78d4470148d20950569a947528e67adc369ef0b",
+    "last_fetched_at": "2026-09-09"
+  },
+  "https://groww.in/mutual-funds/bajaj-finserv-small-cap-fund-direct-growth": {
+    "content_hash": "8ffb219e9777e5f19da68aade2c80c67451b9e623daffaba2a2691312fd10445",
+    "last_fetched_at": "2026-09-09"
+  }
+}
