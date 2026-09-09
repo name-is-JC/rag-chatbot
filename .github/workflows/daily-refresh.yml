@@ -26,12 +26,10 @@ jobs:
           python-version: "3.12"
 
       # PLACEHOLDER — Phase 1 only proves the scheduling/commit-back mechanics.
-      # Phase 2 (Ingestion) replaces this step with the real fetch/parse/chunk/embed pipeline
-      # described in Docs/Ingestion-Architecture.md.
+      # Phase 2 (Ingestion) will point this step at the real pipeline entry point
+      # in phase-2-ingestion/ instead, described in Docs/Ingestion-Architecture.md.
       - name: Run ingestion (placeholder)
-        run: |
-          mkdir -p data
-          python -c "import json, datetime; json.dump({'last_run_utc': datetime.datetime.utcnow().isoformat()}, open('data/last_refresh.json', 'w'), indent=2)"
+        run: python phase-1-scheduler/refresh_placeholder.py
 
       - name: Commit and push if changed
         run: |
